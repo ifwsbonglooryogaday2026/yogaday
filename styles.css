@@ -361,6 +361,17 @@ body::before {
   margin-right: 0.5rem;
 }
 
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group.checkbox label {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+}
+
 /* Buttons */
 .button {
   display: inline-block;
