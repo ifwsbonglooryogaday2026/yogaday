@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>International Yoga Day 2026 — Participate & Get Certificate</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <h1>International Yoga Day 2026</h1>
+        <p class="subtitle">Celebrate Health, Wellness & Harmony Through Yoga</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="update-banner">
+    <p>⏳ Watch for updates...</p>
+  </div>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Participate in India's Largest Yoga Day Program</h2>
+        <p>Join thousands of participants and receive a digital participation certificate. Open to everyone—students, professionals, homemakers, seniors, and all.</p>
+        <a class="button button-primary" href="#register">Participate & Get Certificate</a>
+      </div>
+      <img class="hero-image" src="assets/whatsapp.jpg" alt="International Yoga Day" />
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About International Yoga Day</h2>
+      <p>International Yoga Day is celebrated every year on 21st June across the world to promote the importance of yoga for physical fitness, mental peace, and overall well-being. Yoga is an ancient practice that helps improve flexibility, concentration, breathing control, and stress management.</p>
+      <p>The Government of India and various international organizations actively promote yoga awareness programs to encourage healthier lifestyles. This participation program is designed to inspire individuals to adopt yoga as part of their daily routine.</p>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="section">
+      <h2>Program Objectives</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🎯 Awareness</h3>
+          <p>Promote awareness about yoga and healthy living practices for all.</p>
+        </div>
+        <div class="card">
+          <h3>🧘 Practice</h3>
+          <p>Encourage people to practice yoga regularly for better health.</p>
+        </div>
+        <div class="card">
+          <h3>📚 Education</h3>
+          <p>Increase public understanding of yoga's scientific and traditional benefits.</p>
+        </div>
+        <div class="card">
+          <h3>😌 Wellness</h3>
+          <p>Support wellness and stress-free living through yoga practice.</p>
+        </div>
+        <div class="card">
+          <h3>✨ Lifestyle</h3>
+          <p>Inspire individuals to adopt positive lifestyle habits for longevity.</p>
+        </div>
+        <div class="card">
+          <h3>🏆 Recognition</h3>
+          <p>Provide recognition through a digital participation certificate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Can Participate -->
+    <section class="section">
+      <h2>Who Can Participate?</h2>
+      <p>This program is open to everyone! No prior yoga experience is required.</p>
+      <div class="grid-3">
+        <div class="participant-type">School Students</div>
+        <div class="participant-type">College Students</div>
+        <div class="participant-type">Teachers & Trainers</div>
+        <div class="participant-type">Working Professionals</div>
+        <div class="participant-type">Homemakers</div>
+        <div class="participant-type">Government Employees</div>
+        <div class="participant-type">Yoga Practitioners</div>
+        <div class="participant-type">Senior Citizens</div>
+        <div class="participant-type">General Public</div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="section registration-section">
+      <div class="form-container">
+        <h3>Registration Form</h3>
+        <form id="yogaForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile Number *</label>
+            <input type="tel" id="mobile" name="mobile" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Complete Address *</label>
+            <textarea id="address" name="address" required rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="center">Study Center / Institute Name (Optional)</label>
+            <input type="text" id="center" name="center">
+          </div>
+          <div class="form-group">
+            <label for="experience">Yoga Experience *</label>
+            <select id="experience" name="experience" required>
+              <option value="">-- Select --</option>
+              <option value="beginner">Beginner (No experience)</option>
+              <option value="intermediate">Intermediate (1-2 years)</option>
+              <option value="advanced">Advanced (2+ years)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" name="agree" required>
+              I agree to the terms and conditions
+            </label>
+          </div>
+          <button type="submit" class="button button-primary">Participate & Get Certificate</button>
+        </form>
+        <div id="successMessage" style="display:none;" class="success-message">
+          ✓ Registration successful! Your certificate number is: <strong id="certNumber"></strong>
+        </div>
+
+        <div class="or-separator" style="text-align:center; margin:1.25rem 0; color:var(--muted);">— OR —</div>
+
+        <div id="googleFormSection" class="google-form-section" style="border:1px dashed #e6e6e6; padding:1rem; border-radius:8px;">
+          <h4 style="margin-top:0;">Register via Google Form</h4>
+          <p style="margin:0 0 0.5rem 0; color:var(--muted);">If you prefer, you can use a Google Form to collect registration responses. Open the form or embed it below.</p>
+          <p style="margin:0 0 0.75rem 0;">
+            <a id="openGoogleFormBtn" class="button" href="https://docs.google.com/forms/d/e/FORM_ID/viewform" target="_blank">Open Google Form</a>
+          </p>
+          <div class="google-form-embed" style="max-width:900px;">
+            <!-- Replace FORM_ID in the src attribute with your Google Form's ID (see GOOGLE_FORM_SETUP.md) -->
+            <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Yoga Gallery Section -->
+    <section class="section">
+      <h2>Yoga in Practice</h2>
+      <p style="text-align: center; color: var(--muted);">See our community practicing yoga and wellness activities</p>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/yoga1.jpg" alt="Yoga practice session 1">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/yoga2.jpg" alt="Yoga practice session 2">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/yoga3.jpg" alt="Yoga practice session 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section">
+      <h2>Benefits of Yoga</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Physical Benefits</h3>
+          <ul>
+            <li>Improved Flexibility</li>
+            <li>Better Body Balance</li>
+            <li>Increased Strength</li>
+            <li>Enhanced Stamina</li>
+            <li>Better Posture</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>Mental Benefits</h3>
+          <ul>
+            <li>Reduced Stress & Anxiety</li>
+            <li>Improved Focus & Concentration</li>
+            <li>Better Memory</li>
+            <li>Emotional Stability</li>
+            <li>Mental Relaxation</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>Lifestyle Benefits</h3>
+          <ul>
+            <li>Better Sleep Quality</li>
+            <li>Increased Energy Levels</li>
+            <li>Positive Thinking</li>
+            <li>Improved Discipline</li>
+            <li>Healthier Daily Routine</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Participate Section -->
+    <section class="section">
+      <h2>Why Participate?</h2>
+      <p>Participating in the International Yoga Day Program helps you:</p>
+      <div class="grid-2">
+        <div class="reason">
+          <strong>Learn & Grow</strong> — Gain knowledge about yoga practices and benefits.
+        </div>
+        <div class="reason">
+          <strong>Improve Health</strong> — Promote your physical and mental fitness.
+        </div>
+        <div class="reason">
+          <strong>Reduce Stress</strong> — Practice stress and anxiety reduction techniques.
+        </div>
+        <div class="reason">
+          <strong>Build Community</strong> — Become part of a national wellness movement.
+        </div>
+        <div class="reason">
+          <strong>Get Recognized</strong> — Receive an official participation certificate.
+        </div>
+        <div class="reason">
+          <strong>No Cost</strong> — Free registration and certificate issuance.
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="section sponsors-section">
+      <h2>Our Community Partners</h2>
+      <div class="sponsors-grid">
+        <div class="sponsor-card">
+          <img src="assets/sponsor_ebc.jpg" alt="EBC - Ekthaa Business & Builder Community">
+          <h3>EBC</h3>
+          <p>Ekthaa Business & Builder Community</p>
+        </div>
+        <div class="sponsor-card">
+          <img src="assets/sponsor_lbnagar.jpg" alt="LB Nagar Runners">
+          <h3>LB Nagar Runners</h3>
+          <p>Reinvent Yourself</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proud Supporter Section -->
+    <section class="sponsor-section">
+      <h2 style="margin-top: 0;">Proudly Supported By</h2>
+      <div class="sponsor-content">
+        <div class="sponsor-logo">
+          <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; min-height: 140px;">
+            <img src="assets/IFWS_Logo.pdf" alt="IFWS Logo" style="max-width: 120px; height: auto; filter: brightness(0) invert(1);">
+          </div>
+        </div>
+        <div class="sponsor-info">
+          <h3>Iris Florets World School</h3>
+          <p><strong>Bongloor, Hyderabad, Telangana</strong></p>
+          <p>A premier CBSE school committed to holistic education and student wellness. With a sprawling 5-acre campus, STEAM-based curriculum, and comprehensive wellness programs, Iris Florets believes in nurturing healthy minds and bodies.</p>
+          <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--accent);">📍 Nagarjuna Sagar Rd, Mangalpalle, Hyderabad | 📞 +91 8179287111</p>
+          <a href="https://ifwsbongloor.com/cbse-school-in-bongloor-hyderabad/" class="sponsor-link" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <h2>Get in Touch</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <h3>📞 Phone</h3>
+          <p>91-81792-87111</p>
+        </div>
+        <div class="contact-item">
+          <h3>✉️ Email</h3>
+          <p>info@ifwsbongloor.com</p>
+        </div>
+        <div class="contact-item">
+          <h3>📍 Location</h3>
+          <p>Survey No. 244/I, 245/AA, 245 E, Nagarjuna Sagar Rd, Mangalpalle, Hyderabad, Telangana 501510</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 International Yoga Day. All rights reserved. | <a href="#disclaimer">Disclaimer</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize EmailJS (configure with your EmailJS public key)
+    // Sign up at https://www.emailjs.com and replace the placeholder below
+    // Use the public key from your EmailJS account (Account → API Keys)
+    emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public key
+
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE"; // Replace with your service ID (e.g. service_xxxxxx)
+    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID_HERE"; // Replace with your template ID (e.g. template_xxxxxx)
+
+    // Generate unique registration ID
+    function generateRegistrationId() {
+      const timestamp = Date.now().toString().slice(-6);
+      const random = Math.floor(Math.random() * 900) + 100;
+      return `IYD-${new Date().getFullYear()}-${timestamp}${random}`;
+    }
+
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const mobile = document.getElementById('mobile').value;
+      const address = document.getElementById('address').value;
+      const center = document.getElementById('center').value;
+      const experience = document.getElementById('experience').value;
+      
+      const regId = generateRegistrationId();
+      
+      // Show loading state
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+      
+      try {
+        // Send email to participant
+        const participantResponse = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: email,
+          to_name: name,
+          reg_id: regId,
+          participant_name: name,
+          participant_email: email,
+          participant_mobile: mobile,
+          participant_address: address,
+          participant_center: center || 'Not specified',
+          participant_experience: experience,
+          email_type: 'participant'
+        });
+
+        // Send email to admin
+        const adminResponse = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: 'ifwsbonglooryogaday@gmail.com',
+          to_name: 'Yoga Day Admin',
+          reg_id: regId,
+          participant_name: name,
+          participant_email: email,
+          participant_mobile: mobile,
+          participant_address: address,
+          participant_center: center || 'Not specified',
+          participant_experience: experience,
+          email_type: 'admin',
+          submission_date: new Date().toLocaleString()
+        });
+
+        // Store in localStorage
+        const registration = {
+          name, email, mobile, address, center, experience,
+          regId,
+          date: new Date().toISOString()
+        };
+        localStorage.setItem('yogaReg_' + regId, JSON.stringify(registration));
+        
+        // Show success message
+        document.getElementById('yogaForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('successMessage').innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">✓ Registration Successful!</h3>
+            <p style="font-size: 1rem; margin: 0.5rem 0;">Your unique Registration ID:</p>
+            <p style="font-size: 1.4rem; font-weight: bold; color: var(--accent); margin: 1rem 0; font-family: monospace;">
+              ${regId}
+            </p>
+            <p style="font-size: 0.9rem; color: var(--muted); margin: 1rem 0;">
+              A confirmation email has been sent to <strong>${email}</strong>
+            </p>
+            <p style="font-size: 0.85rem; color: var(--muted);">
+              Please keep your Registration ID for future reference
+            </p>
+          </div>
+        `;
+        
+        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+      } catch (error) {
+        console.error('Error sending email:', error);
+        
+        // Store registration locally even if email fails
+        const registration = {
+          name, email, mobile, address, center, experience,
+          regId,
+          date: new Date().toISOString(),
+          emailSent: false
+        };
+        localStorage.setItem('yogaReg_' + regId, JSON.stringify(registration));
+        
+        // Show success message with warning
+        document.getElementById('yogaForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('successMessage').innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">✓ Registration Successful!</h3>
+            <p style="font-size: 1rem; margin: 0.5rem 0;">Your unique Registration ID:</p>
+            <p style="font-size: 1.4rem; font-weight: bold; color: var(--accent); margin: 1rem 0; font-family: monospace;">
+              ${regId}
+            </p>
+            <p style="font-size: 0.9rem; color: var(--secondary); margin: 1rem 0;">
+              ⚠️ Email service is not configured. Please contact us at info@ifwsbongloor.com
+            </p>
+          </div>
+        `;
+        
+        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
