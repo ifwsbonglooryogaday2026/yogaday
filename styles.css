@@ -58,8 +58,26 @@ body::before {
   text-align: center;
 }
 
+/* Desktop Header Formatting (Before Media Queries) */
 .header-content {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-logo {
+  height: 100px; /* Forces height to strictly 100px on computers */
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: white;
+  padding: 8px;
+}
+
+.header-text {
+  text-align: left;
 }
 
 .site-header h1 {
@@ -725,6 +743,22 @@ body::before {
   .steps {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .header-logo {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .header-text {
+    text-align: center;
+  }
 }
 
 /* Responsive embeds (Google Form, iframes) */
@@ -743,7 +777,6 @@ body::before {
 @media (max-width: 768px) {
   .responsive-embed { max-width: 100%; }
   .responsive-embed .embedded-form { height: 1100px; }
-  .header-content img { height:48px; }
   .hero { padding: 1rem; }
   .form-container { padding: 1rem; }
   
