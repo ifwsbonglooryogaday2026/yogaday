@@ -1,67 +1,376 @@
-# Apps Script to email form submissions (paste into Extensions → Apps Script)
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IFWSBongloor International Yoga Day 2026 — Register Now</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <img class="header-logo" src="assets/IFWS_Logo_page-0002.jpeg" alt="IFWS Logo">
+        <div class="header-text">
+          <h1 style="margin:0;">International Yoga Day 2026</h1>
+          <p class="subtitle" style="margin:0;">Celebrate Health, Wellness & Harmony Through Yoga</p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-Use these default form field labels:
-- Full Name
-- Email Address
-- Mobile Number
-- Complete Address
-- Study Center / Institute Name (Optional)
-- Yoga Experience
-- I agree to the terms and conditions
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-If your form uses different labels, update the `emailField` and `nameField` variables in the script below.
+  <div class="update-banner">
+    <p>⏳ Watch for updates...</p>
+  </div>
 
----
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Participate in India's Largest Yoga Day Program</h2>
+        <p>Join thousands of participants and receive a digital participation certificate. Open to everyone—students, professionals, homemakers, seniors, and all.</p>
+        <a class="button button-primary" href="#register">Register Now</a>
+      </div>
+      <img class="hero-image" src="assets/whatsapp.jpg" alt="International Yoga Day" />
+    </section>
 
-```javascript
-function onFormSubmit(e) {
-  var named = e.namedValues || {};
-  var emailField = 'Email Address'; // change if your form uses a different label
-  var nameField = 'Full Name'; // change if different
+    <section id="about" class="section">
+      <h2>About International Yoga Day</h2>
+      <p>International Yoga Day is celebrated every year on 21st June across the world to promote the importance of yoga for physical fitness, mental peace, and overall well-being. Yoga is an ancient practice that helps improve flexibility, concentration, breathing control, and stress management.</p>
+      <p>The Government of India and various international organizations actively promote yoga awareness programs to encourage healthier lifestyles. This participation program is designed to inspire individuals to adopt yoga as part of their daily routine.</p>
+    </section>
 
-  // Generate a Registration ID
-  var regId = 'IYD-' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyyMMddHHmmss');
+    <section id="objectives" class="section">
+      <h2>Program Objectives</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🎯 Awareness</h3>
+          <p>Promote awareness about yoga and healthy living practices for all.</p>
+        </div>
+        <div class="card">
+          <h3>🧘 Practice</h3>
+          <p>Encourage people to practice yoga regularly for better health.</p>
+        </div>
+        <div class="card">
+          <h3>📚 Education</h3>
+          <p>Increase public understanding of yoga's scientific and traditional benefits.</p>
+        </div>
+        <div class="card">
+          <h3>😌 Wellness</h3>
+          <p>Support wellness and stress-free living through yoga practice.</p>
+        </div>
+        <div class="card">
+          <h3>✨ Lifestyle</h3>
+          <p>Inspire individuals to adopt positive lifestyle habits for longevity.</p>
+        </div>
+        <div class="card">
+          <h3>🏆 Recognition</h3>
+          <p>Provide recognition through a digital participation certificate.</p>
+        </div>
+      </div>
+    </section>
 
-  // Build admin message
-  var msg = 'New Yoga Day Registration\n\n';
-  msg += 'Registration ID: ' + regId + '\n\n';
-  for (var k in named) {
-    msg += k + ': ' + named[k].join(', ') + '\n';
-  }
+    <section id="register" class="section registration-section">
+      <div class="form-container">
+        <h3>Registration Form</h3>
+        <form action="https://formsubmit.co/01dd66441a6182817b22fc48e23e5184" method="POST" id="registrationForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mobile">Mobile Number *</label>
+            <input type="tel" id="mobile" name="mobile" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address *</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="experience">Yoga Experience Level</label>
+            <select id="experience" name="experience">
+              <option value="">Select Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
 
-  var subject = 'Yoga Day Registration — ' + regId;
+          <div class="form-group" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);">
+            <label for="captcha-input"><strong>Spam Check: Solve 5 + 3 = </strong> *</label>
+            <input type="text" id="captcha-input" placeholder="Answer" required style="max-width: 150px; margin-top: 0.5rem;">
+            <p id="error-msg" style="color: #a03f32; display: none; margin: 0.5rem 0 0 0; font-weight: bold;">Incorrect answer. Please try again.</p>
+          </div>
+          
+          <input type="hidden" id="replyToField" name="_replyto" value="">
+          <input type="hidden" id="autoresponseField" name="_autoresponse" value="Thank you so much for your interest in joining our upcoming Yoga Day event at Iris Florets, Bongloor! We have received your details and noted your participation.">
+          <input type="hidden" id="participantCode" name="participant_code" value="">
+          <input type="hidden" name="_next" value="/success.html">
+          <input type="hidden" name="_subject" id="dynamicSubject" value="New Yoga Day Registration">
+          
+          <button type="submit" class="button button-primary">Register Now</button>
+        </form>
+      </div>
+    </section>
 
-  // Send to admin (script runs as the Google account owner)
-  MailApp.sendEmail('ifwsbonglooryogaday@gmail.com', subject, msg);
+    <section class="section">
+      <h2>Yoga in Practice</h2>
+      <p style="text-align: center; color: var(--muted);">See our community practicing yoga and wellness activities</p>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/yoga3.jpg" alt="Yoga practice session 3">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/yoga2.jpeg" alt="Yoga practice session 2">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp Image 2026-06-06 at 8.00.38 PM.jpeg" alt="Yoga practice session 1">
+        </div>
+      </div>
+    </section>
 
-  // Optional: send confirmation to respondent if email provided
-  var recipient = named[emailField] ? named[emailField][0] : null;
-  if (recipient) {
-    var person = named[nameField] ? named[nameField][0] : '';
-    var body = 'Dear ' + person + ',\n\n' +
-               'Thank you for registering for International Yoga Day 2026.\n' +
-               'Your Registration ID: ' + regId + '\n\n' +
-               'Details submitted:\n';
-    for (var k2 in named) {
-      body += k2 + ': ' + named[k2].join(', ') + '\n';
+    <section id="benefits" class="section">
+      <h2>Benefits of Yoga</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Physical Benefits</h3>
+          <ul>
+            <li>Improved Flexibility</li>
+            <li>Better Body Balance</li>
+            <li>Increased Strength</li>
+            <li>Enhanced Stamina</li>
+            <li>Better Posture</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>Mental Benefits</h3>
+          <ul>
+            <li>Reduced Stress & Anxiety</li>
+            <li>Improved Focus & Concentration</li>
+            <li>Better Memory</li>
+            <li>Emotional Stability</li>
+            <li>Mental Relaxation</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>Lifestyle Benefits</h3>
+          <ul>
+            <li>Better Sleep Quality</li>
+            <li>Increased Energy Levels</li>
+            <li>Positive Thinking</li>
+            <li>Improved Discipline</li>
+            <li>Healthier Daily Routine</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why Participate?</h2>
+      <p>Participating in the International Yoga Day Program helps you:</p>
+      <div class="grid-2">
+        <div class="reason">
+          <strong>Learn & Grow</strong> — Gain knowledge about yoga practices and benefits.
+        </div>
+        <div class="reason">
+          <strong>Improve Health</strong> — Promote your physical and mental fitness.
+        </div>
+        <div class="reason">
+          <strong>Reduce Stress</strong> — Practice stress and anxiety reduction techniques.
+        </div>
+        <div class="reason">
+          <strong>Build Community</strong> — Become part of a national wellness movement.
+        </div>
+        <div class="reason">
+          <strong>Get Recognized</strong> — Receive an official participation certificate.
+        </div>
+        <div class="reason">
+          <strong>No Cost</strong> — Free registration and certificate issuance.
+        </div>
+      </div>
+    </section>
+
+    <section class="section sponsors-section">
+      <h2>Our Community Partners</h2>
+      <div class="sponsors-grid">
+        <div class="sponsor-card">
+          <img src="assets/sponsor_ebc.jpg" alt="EBC - Ekthaa Business & Builder Community">
+          <h3>EBC</h3>
+          <p>Ekthaa Business & Builder Community</p>
+        </div>
+        <div class="sponsor-card">
+          <img src="assets/sponsor_lbnagar.jpg" alt="LB Nagar Runners">
+          <h3>LB Nagar Runners</h3>
+          <p>Founded in 2011, LB Nagar Runners is one of the oldest sub-groups of the Hyderabad Runners Society. It is a non-profit organization that has grown into a vibrant community of over 500 active runners, reaching more than 1,000 runner families in the LB Nagar and East Hyderabad areas. The group aims to promote an active, healthy, and inclusive lifestyle while striving to establish itself as the leading fitness and running community in East Hyderabad. Beyond fitness and nurturing endurance athletes, the group actively champions social and environmental change through initiatives like blood donation drives, eco-friendly action campaigns, and organizing signature events like the East Hyderabad Half Marathon.</p>
+        </div>
+        <div class="sponsor-card">
+          <img src="assets/sponsor_tironworld.jpg" alt="Tiron World Logo">
+          <h3>TIRON</h3>
+          <p>TIRON a smart robotic vacuum cleaner brand with 30+ stores is now open in Hyderabad at Shaikpet.</p>
+          <p>Explore our range of smart home cleaning solutions with live product demonstrations and expert guidance.</p>
+          <ul>
+            <li>✓ Free Installation</li>
+            <li>✓ Free Home Demo</li>
+            <li>✓ 100% Service Guarantee</li>
+          </ul>
+          <p>Experience smarter living with TIRON – where innovation meets convenience.</p>
+          <p><a href="https://maps.app.goo.gl/bSoaYuPvDNwLLABRA" target="_blank" rel="noopener noreferrer">View on map</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sponsor-section">
+      <h2 style="margin-top: 0;">Proudly Supported By</h2>
+      <div class="sponsor-content">
+        <div class="sponsor-logo">
+          <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; min-height: 140px;">
+            <img src="assets/IFWS_Logo_page-0002.jpeg" alt="IFWS Logo" style="max-width: 120px; height: auto;">
+          </div>
+        </div>
+        <div class="sponsor-info">
+          <h3>Iris Florets World School</h3>
+          <p><strong>Bongloor, Hyderabad, Telangana</strong></p>
+          <p>A premier CBSE school committed to holistic education and student wellness. With a sprawling 5-acre campus, STEAM-based curriculum, and comprehensive wellness programs, Iris Florets believes in nurturing healthy minds and bodies.</p>
+          <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--accent);">📍 Nagarjuna Sagar Rd, Mangalpalle, Hyderabad | 📞 +91 8179287111</p>
+          <a href="https://ifwsbongloor.com/cbse-school-in-bongloor-hyderabad/" class="sponsor-link" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <h2>Get in Touch</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <h3>📞 Phone</h3>
+          <p>91-81792-87111</p>
+        </div>
+        <div class="contact-item">
+          <h3>✉️ Email</h3>
+          <p><a href="mailto:ifwsbonglooryogaday@gmail.com">ifwsbonglooryogaday@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>📍 Location</h3>
+          <p>Survey No. 244/I, 245/AA, 245 E, Nagarjuna Sagar Rd, Mangalpalle, Hyderabad, Telangana 501510</p>
+        </div>
+        <div class="contact-item">
+          <h3>🔗 Connect</h3>
+          <div class="social-links">
+            <a class="social-link" href="https://www.instagram.com/irisfloretsworldschoolbongloor?igsh=MWYycTJhZnJtN3dsbA==" target="_blank" rel="noreferrer noopener">📸 Instagram</a>
+            <a class="social-link" href="https://www.youtube.com/@IrisFloretsWorldSchoolBongloor" target="_blank" rel="noreferrer noopener">▶️ YouTube</a>
+            <a class="social-link" href="https://maps.app.goo.gl/vWGZKQr1UvA5bQdQ9?g_st=iw" target="_blank" rel="noreferrer noopener">🗺️ Google Map</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 International Yoga Day. All rights reserved. | <a href="#disclaimer">Disclaimer</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Generate unique Participant Code
+    function generateParticipantCode() {
+      // Format: YOGA-YYYYMMDD-XXXXXX
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const randomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+      
+      return `YOGA-${year}${month}${day}-${randomCode}`;
     }
-    body += '\nRegards,\nInternational Yoga Day 2026';
-    MailApp.sendEmail(recipient, 'Registration Confirmation — ' + regId, body);
-  }
-}
-```
 
-Steps to install:
-1. Open the linked Google Sheet for responses (Form → Responses → Open in Sheets).
-2. Extensions → Apps Script.
-3. Replace any existing code with the script above and Save.
-4. Run the function `onFormSubmit` once to trigger the authorization prompt; grant permissions.
-5. In Apps Script, open Triggers (left menu) → Add Trigger:
-   - Function: `onFormSubmit`
-   - Event source: `From spreadsheet`
-   - Event type: `On form submit`
-6. Test by submitting the Google Form. Admin notifications will be sent to `ifwsbonglooryogaday@gmail.com`.
+    // Handle form submission
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('registrationForm');
+      
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          
+          // 1. Verify Custom Math Captcha First
+          const answer = document.getElementById('captcha-input').value;
+          const errorMsg = document.getElementById('error-msg');
+          
+          if (parseInt(answer) !== 8) {
+            e.preventDefault(); // Stop form submission
+            errorMsg.style.display = 'block'; // Show error message
+            return; // Exit here so it doesn't process the rest
+          } else {
+            errorMsg.style.display = 'none'; // Hide error if they get it right
+          }
 
-Notes:
-- Emails are sent from the Google account that owns the form/sheet. Sign in as `ifwsbonglooryogaday@gmail.com` if you want emails to originate from that address.
-- Apps Script daily quotas apply.
+          // 2. Generate unique code
+          const uniqueCode = generateParticipantCode();
+          
+          // 3. Set the hidden field value
+          document.getElementById('participantCode').value = uniqueCode;
+          
+          // 4. Store in sessionStorage
+          sessionStorage.setItem('participantCode', uniqueCode);
+          
+          // 5. Set the reply-to address
+          const email = document.getElementById('email').value;
+          const replyToField = document.getElementById('replyToField');
+          if (replyToField) {
+            replyToField.value = email;
+          }
+
+          // 6. Update the _next URL
+          const nextInput = form.querySelector('input[name="_next"]');
+          if (nextInput) {
+            const currentPath = window.location.pathname.replace(/\/index\.html$/, '');
+            const basePath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+            nextInput.value = window.location.origin + basePath + '/success.html?code=' + encodeURIComponent(uniqueCode);
+          }
+
+          // 7. Set dynamic subject line
+          const subjectInput = document.getElementById('dynamicSubject');
+          if (subjectInput) {
+            subjectInput.value = `Yoga Day Registration Confirmation - ${uniqueCode}`;
+          }
+
+          // 8. Build autoresponse message
+          const autoresponseField = document.getElementById('autoresponseField');
+          if (autoresponseField) {
+            autoresponseField.value = "Thank you so much for your interest in joining our upcoming Yoga Day event at Iris Florets, Bongloor! We have received your details and noted your participation.";
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
