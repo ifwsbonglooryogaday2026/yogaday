@@ -118,9 +118,7 @@
           
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" id="replyToField" name="_replyto" value="">
-          <input type="hidden" id="ccField" name="_cc" value="">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" id="autoresponseField" name="_autoresponse" value="<strong>Thank you so much for your interest in joining our upcoming Yoga Day event at Iris Florets, Bongloor!</strong>&#10;&#10;<strong>We have noted your participation.</strong>">
+          <input type="hidden" id="autoresponseField" name="_autoresponse" value="">
           <input type="hidden" id="participantCode" name="participant_code" value="">
           <input type="hidden" name="_next" value="/success.html">
           <input type="hidden" name="_subject" id="dynamicSubject" value="New Yoga Day Registration">
@@ -333,11 +331,6 @@
             replyToField.value = email;
           }
 
-          const ccField = document.getElementById('ccField');
-          if (ccField) {
-            ccField.value = email;
-          }
-
           // 5. Update the _next URL to include the code as a query parameter
           const nextInput = form.querySelector('input[name="_next"]');
           if (nextInput) {
@@ -356,7 +349,7 @@
           // 7. Build the autoresponse message for the submitter
           const autoresponseField = document.getElementById('autoresponseField');
           if (autoresponseField) {
-            autoresponseField.value = `Thank you so much for your interest in joining our upcoming Yoga Day event at Iris Florets, Bongloor!\n\nWe have noted your participation.`;
+            autoresponseField.value = `Dear ${participantName},\n\nThank you for registering for International Yoga Day 2026. Your unique registration code is ${uniqueCode}.\n\nPlease keep this code safe and present it when needed.\n\nBest regards,\nIris Florets World School, Bongloor, Hyderabad`;
           }
         });
       }
