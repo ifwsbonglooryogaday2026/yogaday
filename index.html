@@ -327,8 +327,9 @@
           // 5. Update the _next URL to include the code as a query parameter
           const nextInput = form.querySelector('input[name="_next"]');
           if (nextInput) {
-            const baseUrl = window.location.origin + window.location.pathname.replace(/\/index\.html$/, '');
-            nextInput.value = baseUrl + '/success.html?code=' + encodeURIComponent(uniqueCode);
+            const currentPath = window.location.pathname.replace(/\/index\.html$/, '');
+            const basePath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+            nextInput.value = window.location.origin + basePath + '/success.html?code=' + encodeURIComponent(uniqueCode);
           }
 
           // 6. Set the dynamic email subject line
