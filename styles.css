@@ -167,37 +167,12 @@ body::before {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Make gallery items a fixed responsive height and ensure the image fully covers the area */
-.gallery-item {
-  height: 320px;
-}
-
 .gallery-item img {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  height: 320px;
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.35s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.03);
-}
-
-/* Responsive heights */
-@media (max-width: 1024px) {
-  .gallery-item { height: 280px; }
-}
-
-@media (max-width: 768px) {
-  .gallery-item { height: 220px; }
-}
-
-@media (max-width: 420px) {
-  .gallery-item { height: 160px; }
 }
 
 /* Sections */
