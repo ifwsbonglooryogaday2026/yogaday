@@ -44,13 +44,7 @@
       </div>
       <div class="hero-gallery">
         <div class="hero-gallery-item">
-          <img src="assets/whatsapp.jpg" alt="WhatsApp Yoga Event" />
-        </div>
-        <div class="hero-gallery-item">
-          <img src="assets/yodaday1.jpeg" alt="Yoga Day Poster 1" />
-        </div>
-        <div class="hero-gallery-item">
-          <img src="assets/yogaday2.jpeg" alt="Yoga Day Poster 2" />
+          <img id="heroRotateImage" src="assets/whatsapp.jpg" alt="WhatsApp Yoga Event" />
         </div>
       </div>
     </section>
@@ -368,40 +362,24 @@
       }
 
       function startGalleryRotation() {
-        const galleryImages = document.querySelectorAll('.gallery-item img');
-        if (!galleryImages.length) return;
+        const heroImage = document.getElementById('heroRotateImage');
+        if (!heroImage) return;
 
-        const imageSets = [
-          [
-            { src: 'assets/yoga3.jpg', alt: 'Yoga practice session 3' },
-            { src: 'assets/yoga2.jpeg', alt: 'Yoga practice session 2' },
-            { src: 'assets/WhatsApp Image 2026-06-06 at 8.00.38 PM.jpeg', alt: 'Yoga practice session 1' }
-          ],
-          [
-            { src: 'assets/yoga1.jpg', alt: 'Yoga group session' },
-            { src: 'assets/yoga4.jpg', alt: 'Yoga training outdoors' },
-            { src: 'assets/whatsapp.jpg', alt: 'Yoga practice event' }
-          ],
-          [
-            { src: 'assets/yoga2.jpg', alt: 'Yoga session close-up' },
-            { src: 'assets/yoga3.jpg', alt: 'Yoga practice session' },
-            { src: 'assets/yoga1.jpg', alt: 'Meditation and balance' }
-          ]
+        const rotateImages = [
+          { src: 'assets/whatsapp.jpg', alt: 'WhatsApp Yoga Event' },
+          { src: 'assets/yodaday1.jpeg', alt: 'Yoga Day Poster 1' },
+          { src: 'assets/yogaday2.jpeg', alt: 'Yoga Day Poster 2' }
         ];
 
-        let currentSet = 0;
+        let currentIndex = 0;
 
-        function rotateImages() {
-          currentSet = (currentSet + 1) % imageSets.length;
-          imageSets[currentSet].forEach((imageData, index) => {
-            if (galleryImages[index]) {
-              galleryImages[index].src = imageData.src;
-              galleryImages[index].alt = imageData.alt;
-            }
-          });
+        function rotateImage() {
+          currentIndex = (currentIndex + 1) % rotateImages.length;
+          heroImage.src = rotateImages[currentIndex].src;
+          heroImage.alt = rotateImages[currentIndex].alt;
         }
 
-        setInterval(rotateImages, 5000);
+        setInterval(rotateImage, 1000);
       }
 
       startGalleryRotation();
