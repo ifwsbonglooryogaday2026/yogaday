@@ -233,13 +233,6 @@ body::before {
      grid-template-columns: 1fr;
      padding: 1.5rem;
    }
-   .hero-gallery {
-     grid-template-columns: 1fr;
-   }
-   .hero-gallery-item {
-     min-height: 180px;
-     max-height: 220px;
-   }
  }
  
 
