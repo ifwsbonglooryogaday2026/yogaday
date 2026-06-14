@@ -247,13 +247,31 @@ body::before {
   margin-bottom: 1.5rem;
 }
 
-.hero-image {
+.hero-gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.hero-gallery-item {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: white;
+}
+
+.hero-gallery-item img {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
+  height: 180px;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  object-position: center;
+}
+
+@media (min-width: 900px) {
+  .hero-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -262,6 +280,7 @@ body::before {
     padding: 1.5rem;
   }
 }
+
 
 /* Cards & Grid */
 .grid-2 {
